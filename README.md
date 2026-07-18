@@ -28,7 +28,7 @@ python train.py --data config.yaml --model yolov8n.pt \
 ## 3. Export to ONNX
 
 ```bash
-python scripts/export_onnx.py --weights runs/detect/defect_run1/weights/best.pt \
+python export_onnx.py --weights runs/detect/defect_run1/weights/best.pt \
     --imgsz 640 --simplify
 ```
 
@@ -37,22 +37,37 @@ python scripts/export_onnx.py --weights runs/detect/defect_run1/weights/best.pt 
 ## 5. Inference on the held-out video
 
 ```bash
-python scripts/infer_video.py --model best.onnx --video holdout_clip.mp4 \
+python Predict_video_with_log.py --model best.onnx --video holdout_clip.mp4 \
     --output_csv results.csv --output_video annotated.mp4 \
     --providers CPUExecutionProvider
 ```
 
 Per-frame detections, confidence, and latency are written to `results.csv`.
 
-> Note: this clip was reassembled from the same 45 test images rather than a
-> continuously-captured video, so `timestamp_s` in the CSV is synthetic (derived
-> from the fixed FPS you encoded it at) rather than a real capture time — treat
-> `frame_idx` as the reliable identifier when referencing failure cases below,
-> and mention this in the writeup so it's not mistaken for a real video capture.
+
 
 ## Demo Video
+# Video 
+Pytorch FP32 Model
+Processed Frames : 45
+Average Latency  : 246.96 ms
+Average FPS      : 4.05
+![Demo](https://github.com/Rukhsar111/Defect_Detection/blob/main/Outputs/Output_FP32pt.gif)
 
-🎥 [Watch the demo] (C:\Users\Aatif\Desktop\Artikate_Studio\Defect_Detection\output_FP32pt.mp4)
+
+## FP32_ONNX_Runtime
+Processed Frames : 45
+Average Latency  : 141.33 ms
+Average FPS      : 7.08
+![Demo](https://github.com/Rukhsar111/Defect_Detection/blob/main/Outputs/Output_ONNXFP32.gif)
+
+
+## FP16_ONNX_Runtime
+Processed Frames : 45
+Average Latency  : 122.49 ms
+Average FPS      : 8.16
+![Demo](https://github.com/Rukhsar111/Defect_Detection/blob/main/Outputs/Output_ONNXFP16.gif)
+
 
 ## 6. Hardware and measured latency 
 
@@ -91,8 +106,8 @@ python evaluate.py --weights runs/detect/defect_run1/weights/best.pt \
 | Recall | 0.744 |
 | mAP50 | 0.819 |
 | mAP50-95 | 0.411 |
-| Confidence threshold used | `[0.5]` |
-| IoU threshold used | `[0.5]` |
+| Confidence threshold used | 0.5 |
+| IoU threshold used | 0.5|
 
 ## 8. Worst failure cases on the held-out video
 
