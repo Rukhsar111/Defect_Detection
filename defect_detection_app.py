@@ -329,7 +329,7 @@ if __name__ == "__main__":
     # ========================================================================
     # HEADING
     # ========================================================================
-    heading_label = tk.Label(root, text="Defect Detection Demo", font=("Arial", 44, "bold"), bg="white")
+    heading_label = tk.Label(root, text="Defect Detection Application", font=("Arial", 44, "bold"), bg="white")
     heading_label.pack(pady=10)
 
 
