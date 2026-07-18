@@ -9,8 +9,7 @@ library for this step; the assignment cares that you report real numbers, not th
 you reinvent PR computation from scratch.
 
 Usage:
-    python scripts/evaluate.py --weights runs/detect/defect_run1/weights/best.pt \
-        --data configs/data.yaml --conf 0.5 --iou 0.5 --split val
+    python  evaluate.py --weights  exported_models\best.pt --data config.yaml --conf 0.5 --iou 0.5 --split val
 """
 import argparse
 import json
