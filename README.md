@@ -83,8 +83,8 @@ Average FPS      : 8.16
 | Model | Mean latency | Mean FPS | Notes |
 |---|---|---|---|
 | PyTorch (`best.pt`) | 246.57 ms | 5 | Baseline, no export |
-| ONNX Runtime FP32 (`best_FP32.onnx`) | 140.93 ms | 10 | ~1.32x faster than PyTorch — ORT's graph optimizations (op fusion, constant folding) account for this even before any precision change |
-| ONNX Runtime FP16 (`best_FP16.onnx`) | 122.32 ms | 10 | **Slower than FP32**, as expected on CPU: this CPU has no native FP16 compute path. |
+| ONNX Runtime FP32 (`best_FP32.onnx`) | 140.93 ms | 10 | ~1.32x faster than PyTorch  |
+| ONNX Runtime FP16 (`best_FP16.onnx`) | 122.32 ms | 10 | **Slower than FP32**, as expected on CPU: this CPU has no native FP16 compute. |
 
 ### FP32 vs INT8 benchmark
 
