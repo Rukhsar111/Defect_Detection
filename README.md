@@ -1,11 +1,9 @@
 # Defect Detection Pipeline
 
 Single-class ("Defect") detector fine-tuned from YOLOv8, exported to ONNX, run
-through ONNX Runtime, and benchmarked FP32 vs INT8.
+through ONNX Runtime, and benchmarked FP32 vs FP16.
 
-# Output Video 
-## Pytorch FP32 Model  
-Processed Frames : 45
+
 
 ## 1. Setup
 
