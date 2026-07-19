@@ -100,10 +100,10 @@ python evaluate.py --weights runs/detect/defect_run1/weights/best.pt \
 
 | Metric | Value |
 |---|---|
-| Precision | 0.836 |
-| Recall | 0.744 |
-| mAP50 | 0.819 |
-| mAP50-95 | 0.411 |
+| Precision | 0.916 |
+| Recall | 0.773 |
+| mAP50 | 0.859 |
+| mAP50-95 | 0.476|
 | Confidence threshold used | 0.5 |
 | IoU threshold used | 0.5|
 
