@@ -6,7 +6,7 @@ import numpy as np
 import time
 from pathlib import Path
 from ultralytics import YOLO
-from ultralytics import RTDETR
+
 
 
 # ============================================================================
