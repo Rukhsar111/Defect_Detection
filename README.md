@@ -15,11 +15,11 @@ pip install -r requirements.txt
 
 ```bash
 python train.py --data config.yaml --model yolov8n.pt \
-    --epochs 100 --imgsz 640 --batch 16 --name defect_run1
+    --epochs 200 --imgsz 640 --batch 16 --name defect_run1
 ```
 
 - Base checkpoint: `yolov8n.pt`
-- Final epoch / early-stopped at: `100`
+- Final epoch / early-stopped at: `200`
 - Training hardware: `GPU`
 
 
@@ -94,7 +94,7 @@ Int8 Coversion Not supported in my Hardware.
 ## 7. Precision / recall on the validation split
 
 ```bash
-python evaluate.py --weights runs/detect/defect_run1/weights/best.pt \
+python evaluate.py --weights runs/detect/train-3/weights/best.pt \
     --data config.yaml --conf 0.5 --iou 0.5 --split val
 ```
 
