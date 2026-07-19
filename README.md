@@ -26,7 +26,7 @@ python train.py --data config.yaml --model yolov8n.pt \
 ## 3. Export to ONNX
 
 ```bash
-python export_onnx.py --weights runs/detect/defect_run1/weights/best.pt \
+python export_onnx.py --weights runs/train-3/weights/best.pt \
     --imgsz 640 --simplify
 ```
 
