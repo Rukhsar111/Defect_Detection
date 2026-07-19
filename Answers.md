@@ -14,7 +14,7 @@ From 0.91 map to 0.58 a way too low which is very high. After Quantizing , Accur
 
 I would debug this systematically by isolating where the accuracy is being lost rather than assuming quantization is the problem. Since the architecture and dataset are unchanged, the drop must come from the deployment pipeline.
 
-1. Validate ONNX FP32 against PyTorch - If ONNX already fails, investigate export, preprocessing, or tensor layout.
+1. Validate ONNX FP32 against PyTorch - If ONNX already fails, investigate export, and  preprocessingt.
 
 2. Validate TensorRT FP16 - If FP16 matches PyTorch but INT8 fails, focus on quantization/calibration.
 
@@ -42,13 +42,7 @@ I would evaluate the model at every stage using the same validation dataset and 
 2. compare it for FP16 it should be  between 0.90-0.91
 3. ONNX FP32	Should also be  0.91
 4. TensorRT FP16   would be between 	0.90-0.91
-5. TensorRT INT8	Should remain close (typically within 1–3%) Not more then that.
-
-Apart from above Ensure:
-1. correct tensor layout
-2. proper normalization
-3. correct channel ordering
-
+5. TensorRT INT8	Should remain close within 1–3%  Not more then that.
 
 
 # Scenario B — Bounding boxes drift on one camera feed only
