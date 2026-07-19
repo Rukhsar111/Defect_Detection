@@ -85,7 +85,7 @@ How to confirm without physical access?
 1. Compare stream  (resolution, codec, FPS, aspect ratio) with other 11  feeds.
 2. Check the per-camera config store (calibration matrices, ROI) for that camera's ID — verify it's using its own  saved parameters. 
 3. Record a few seconds of the problematic  stream and run it through the same inference pipeline offline.
-If the offset pers ists, the issue is in preprocessing or post processingnot the live stream.
+If the offset persists, the issue is in preprocessing or post processingnot the live stream.
 
 
 # Scenario C — Model degrades over three months in production, no redeploys
@@ -131,16 +131,22 @@ Flag anything you're genuinely unsure about rather than smoothing over it — we
 
 
 ## What model size/family and precision (FP16/INT8) would you target to fit this latency budget across 8 concurrent streams on one Orin, and what's your reasoning?
-I'll try with the smallest Model ie YOLOv8n with FP16 first to fit with 8 cameras because at fp32 with image size 640 the 
+## 1. Model size/precision
+I'll try with the smallest Model ie YOLOv8n as its lighter in weight and Accurate.
+
+The Preciion I choose would be INT8  as it  gives 1.5-2x througput over FP16 which can be highly efficient and smooth on 8 Concurrent streams.
 
 
 
 ## Estimate the aggregate throughput you need (frames/second across all feeds) and check it against what your chosen model/precision combination can realistically deliver on that hardware. Show the arithmetic.
 Throughput Estimates:
 8 x 15FPS = 120 FPS (15 fps per camera)
+Latency budget (200ms total) is Required.
+For Capturing Usually  it takes between 5-12ms
+for preprocessing On orion It takes between - 2-5ms
+For Postprocessing  - 2-5ms
 
-
-
+So for each frame the Latency should be between 8-15ms.
 
 
 
